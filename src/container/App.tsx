@@ -4,7 +4,6 @@ import Alert from "../components/Alert/Alert";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
-
   const [showAlert, setShowAlert] = useState(false);
 
   const cancel = () => setShowModal(false);
@@ -14,27 +13,31 @@ function App() {
   };
 
   const buttons = [
-    {type: 'btn btn-primary', label: 'Continue', onClick: continues},
-    {type: 'btn btn-danger', label: 'Close', onClick: cancel}
+    {type: 'primary', label: 'Continue', onClick: continues},
+    {type: 'danger', label: 'Close', onClick: cancel}
   ];
+
+  const closeAlert = () => setShowAlert(false);
 
   return (
     <>
-      <Alert showAlert={showAlert}/>
-      <button className="w-100 btn btn-primary" onClick={() => setShowModal(true)}>
+      <button className="w-25 btn btn-primary m-2" onClick={() => setShowModal(true)}>
         Show Modal
       </button>
-      <button className="w-100 btn btn-primary" onClick={() => setShowAlert(true)}>
+      <button className="w-25 btn btn-primary m-2" onClick={() => setShowAlert(true)}>
         Show Alert
       </button>
       <Modal show={showModal} title="Modal title" onClose={cancel}>
         <div className="modal-footer">
           {buttons.map((button) => (
-            <button className={button.type} onClick={button.onClick}>{button.label}</button>
+              <button key={Math.random()} className={'btn btn-' + button.type}
+                      onClick={button.onClick}>{button.label}</button>
             )
           )}
         </div>
       </Modal>
+      <Alert showAlert={showAlert} type={'primary'} onDismiss={closeAlert}/>
+      <Alert showAlert={showAlert} type={'danger'}/>
     </>
   );
 }
