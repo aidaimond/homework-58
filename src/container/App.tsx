@@ -36,8 +36,12 @@ function App() {
           )}
         </div>
       </Modal>
-      <Alert showAlert={showAlert} type={'primary'} onDismiss={closeAlert}/>
-      <Alert showAlert={showAlert} type={'danger'}/>
+      <Alert showAlert={showAlert} type={'primary'} onDismiss={closeAlert}>
+        This is a primary type alert
+      </Alert>
+      <Alert showAlert={showAlert} type={'danger'}>
+        This is a danger type alert
+      </Alert>
     </>
   );
 }

@@ -11,10 +11,9 @@ const Alert: React.FC<Props> = ({showAlert, type, onDismiss, children}) => {
     <>
       <div className={"alert m-2 alert-" + type}
            style={{display: showAlert ? 'block' : 'none'}}>
-        A simple primary alert—check it out!
+        {children}
         <button type="button" className={onDismiss ? 'btn-close float-end' : 'd-none'} onClick={onDismiss}></button>
       </div>
-      {children}
     </>
   );
 };
