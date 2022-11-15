@@ -5,11 +5,12 @@ import Alert from "../components/Alert/Alert";
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [showNewAlert, setShowNewAlert] = useState(false);
 
   const cancel = () => setShowModal(false);
 
   const continues = () => {
-    alert('hello');
+    alert('You clicked continue!');
   };
 
   const buttons = [
@@ -27,6 +28,9 @@ function App() {
       <button className="w-25 btn btn-primary m-2" onClick={() => setShowAlert(true)}>
         Show Alert
       </button>
+      <button className="w-25 btn btn-primary m-2" onClick={() => setShowNewAlert(true)}>
+        Show Second Alert
+      </button>
       <Modal show={showModal} title="Modal title" onClose={cancel}>
         <div className="modal-footer">
           {buttons.map((button) => (
@@ -39,7 +43,7 @@ function App() {
       <Alert showAlert={showAlert} type={'primary'} onDismiss={closeAlert}>
         This is a primary type alert
       </Alert>
-      <Alert showAlert={showAlert} type={'danger'}>
+      <Alert showAlert={showNewAlert} type={'danger'}>
         This is a danger type alert
       </Alert>
     </>
